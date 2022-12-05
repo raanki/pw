@@ -6,7 +6,7 @@
 /*   By: ranki <ranki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/04 21:33:59 by ranki             #+#    #+#             */
-/*   Updated: 2022/12/05 14:30:38 by ranki            ###   ########.fr       */
+/*   Updated: 2022/12/05 22:51:14 by ranki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,4 +47,6 @@ void    ft_middlelst(t_list **a, t_list **b);
 void    ft_sort_2(t_list **lst);
 int ft_quick_sort(t_list **a, t_list **b, int size);
 int ft_quick_sort_b(t_list **a, t_list **b, int size);
+ void   ft_printlist(t_list *lst);
+ int     ft_checksorted_d(t_list *lst);
 #endif

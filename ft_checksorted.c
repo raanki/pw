@@ -6,7 +6,7 @@
 /*   By: ranki <ranki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/04 22:38:55 by ranki             #+#    #+#             */
-/*   Updated: 2022/12/05 14:27:32 by ranki            ###   ########.fr       */
+/*   Updated: 2022/12/05 22:53:22 by ranki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int     ft_checksorted(t_list *lst)
     t_list  *prec;
 
     up = 1;
-    down = 1;
+    down = 0;
     if  (lst == NULL)
         return (1);
     tmp = lst->next;
@@ -29,8 +29,32 @@ int     ft_checksorted(t_list *lst)
     {
         if(prec->content > tmp->content)
             up = 0;
-        if(prec->content < tmp->content)
-            down = 0;            
+      /*if(prec->content < tmp->content)
+            down = 0;        */    
+        tmp = tmp->next;
+        prec = prec->next;
+    }
+    return ((up == 1 || down == 1));
+}
+int     ft_checksorted_d(t_list *lst)
+{
+    int up;
+    int down;
+    t_list  *tmp;
+    t_list  *prec;
+
+    up = 0;
+    down = 1;
+    if  (lst == NULL)
+        return (1);
+    tmp = lst->next;
+    prec = lst;
+    while(tmp != NULL)
+    {
+        /*if(prec->content > tmp->content)
+            up = 0;*/
+      if(prec->content < tmp->content)
+            down = 0;           
         tmp = tmp->next;
         prec = prec->next;
     }

@@ -6,14 +6,14 @@
 /*   By: ranki <ranki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/04 21:30:36 by ranki             #+#    #+#             */
-/*   Updated: 2022/12/05 15:02:09 by ranki            ###   ########.fr       */
+/*   Updated: 2022/12/05 22:57:22 by ranki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include "stdio.h"
 
-void    ft_printlist(t_list *lst)
+ void   ft_printlist(t_list *lst)
 {
     if (lst == NULL)
         return ;
@@ -39,7 +39,7 @@ int main (int argc, char**argv)
 {
         t_list *lst = ft_argtolist(argc, argv);
         ft_printlist(lst);
-        if (ft_checksorted(lst))
+        if (ft_checksorted_d(lst))
             printf("\nLa liste est bien trie\n\n");
         else
         {
@@ -48,12 +48,14 @@ int main (int argc, char**argv)
         //ft_swap_a(&lst);
        // ft_printlist(lst);
         //ft_unstack(&lst);
-        t_list *b = malloc(sizeof(t_list));
+        //t_list *b = malloc(sizeof(t_list));
+        t_list *b = NULL;
         ft_quick_sort(&lst, &b, ft_lstsize(lst));
         printf("a = ");
         ft_printlist(lst);
-        printf("b = ");
-        ft_printlist(b);
+        printf("\nau final a = ");
+        ft_printlist(lst);
         ft_lstclear(&lst);
+        printf("\n ");
         return (0);
 }
