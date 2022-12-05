@@ -1,44 +1,46 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_push.c                                          :+:      :+:    :+:   */
+/*   ft_merge_sort.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ranki <ranki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/05 00:19:22 by ranki             #+#    #+#             */
-/*   Updated: 2022/12/05 11:11:21 by ranki            ###   ########.fr       */
+/*   Created: 2022/12/05 10:50:08 by ranki             #+#    #+#             */
+/*   Updated: 2022/12/05 13:51:23 by ranki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_list *ft_unstack(t_list **a)
+/*void    ft_middlelst(t_list **a, t_list **b)
 {
+    int i;
+    int size;
     t_list *tmp;
-
-    if (*a == NULL)
-        return (NULL);
-    tmp = *a;
-    *a = (*a)->next;
-    return (tmp);
+    
+    
+    i = 0;
+    size = ft_lstsize(*lst);
+    while (i < size / 2)
+        tmp = tmp->next;
+    while (tmp != NULL)
+    {
+        ft_push_b(a, b);
+        tmp = tmp->next;
+    }
+    return ;
 }
 
-void    ft_push_a(t_list **a, t_list **b)
+void    ft_sort(t_list **a, t_list **b)
 {
-    t_list *tmp;
-
-    if (*b == NULL)
+    
+}
+void    ft_merge_sort(t_list **a, t_list **b)
+{
+  
+    if (a == NULL || a->next == NULL)
         return ;
-    ft_lstadd_front(a, ft_unstack(b));
-    printf("pa\n");
-}
-
-void    ft_push_b(t_list **a, t_list **b)
-{
-    t_list *tmp;
-
-    if (*a == NULL)
-        return ;
-    ft_lstadd_front(b, ft_unstack(a));
-    printf("pb\n");
-}
+    ft_middlelst(a, b);
+    ft_merge_sort(a);
+    ft_merge_sort(b);
+}*/

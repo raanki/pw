@@ -6,7 +6,7 @@
 /*   By: ranki <ranki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/04 21:33:59 by ranki             #+#    #+#             */
-/*   Updated: 2022/12/05 01:14:10 by ranki            ###   ########.fr       */
+/*   Updated: 2022/12/05 14:30:38 by ranki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,17 +30,21 @@ int		ft_lstsize(t_list *lst);
 t_list	*ft_lstlast(t_list *lst);
 void	ft_lstadd_back(t_list **lst, t_list *new);
 void	ft_lstdelone(t_list *lst, void (*del)(void*));
-void	ft_lstclear(t_list **lst, void (*del)(void *));
+void	ft_lstclear(t_list **lst);
 int ft_checksorted(t_list *lst);
 void ft_swap_a(t_list **lst);
 void ft_swap_b(t_list **lst);
 void ft_swap_ss(t_list **a, t_list **b);
 void    ft_push_a(t_list **a, t_list **b);
-void    ft_push_a(t_list **a, t_list **b);
+void    ft_push_b(t_list **a, t_list **b);
 t_list *ft_unstack(t_list **a);
 void    ft_rotate_a(t_list **lst);
 void    ft_rotate_b(t_list **lst);
 void ft_rrotate_a(t_list **a);
-void ft_rrotate_a(t_list **b);
+void ft_rrotate_b(t_list **b);
 void ft_rrotate_rr(t_list **a, t_list **b);
+void    ft_middlelst(t_list **a, t_list **b);
+void    ft_sort_2(t_list **lst);
+int ft_quick_sort(t_list **a, t_list **b, int size);
+int ft_quick_sort_b(t_list **a, t_list **b, int size);
 #endif

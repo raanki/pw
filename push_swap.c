@@ -6,7 +6,7 @@
 /*   By: ranki <ranki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/04 21:30:36 by ranki             #+#    #+#             */
-/*   Updated: 2022/12/05 01:14:06 by ranki            ###   ########.fr       */
+/*   Updated: 2022/12/05 15:02:09 by ranki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,12 @@ int main (int argc, char**argv)
         //ft_swap_a(&lst);
        // ft_printlist(lst);
         //ft_unstack(&lst);
-        ft_rrotate_a(&lst);
+        t_list *b = malloc(sizeof(t_list));
+        ft_quick_sort(&lst, &b, ft_lstsize(lst));
+        printf("a = ");
         ft_printlist(lst);
+        printf("b = ");
+        ft_printlist(b);
+        ft_lstclear(&lst);
         return (0);
 }
