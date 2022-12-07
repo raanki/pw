@@ -6,7 +6,7 @@
 /*   By: ranki <ranki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/04 21:33:59 by ranki             #+#    #+#             */
-/*   Updated: 2022/12/05 22:51:14 by ranki            ###   ########.fr       */
+/*   Updated: 2022/12/08 00:28:00 by ranki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ t_list	*ft_lstlast(t_list *lst);
 void	ft_lstadd_back(t_list **lst, t_list *new);
 void	ft_lstdelone(t_list *lst, void (*del)(void*));
 void	ft_lstclear(t_list **lst);
-int ft_checksorted(t_list *lst);
+int ft_checksorted(t_list *lst, int size);
 void ft_swap_a(t_list **lst);
 void ft_swap_b(t_list **lst);
 void ft_swap_ss(t_list **a, t_list **b);
@@ -45,8 +45,14 @@ void ft_rrotate_b(t_list **b);
 void ft_rrotate_rr(t_list **a, t_list **b);
 void    ft_middlelst(t_list **a, t_list **b);
 void    ft_sort_2(t_list **lst);
+void    ft_sort_2_d(t_list **lst);
 int ft_quick_sort(t_list **a, t_list **b, int size);
 int ft_quick_sort_b(t_list **a, t_list **b, int size);
  void   ft_printlist(t_list *lst);
- int     ft_checksorted_d(t_list *lst);
+ int     ft_checksorted_d(t_list *lst, int size);
+  void    ft_sort_3(t_list **a);
+ void    ft_sort_3d(t_list **a);
+ int ft_median(t_list *lst, int size);
+ void    ft_sort_bdup(t_list **a, t_list **b, int size);
+ void    ft_sort_adup(t_list **a, t_list **b, int size);
 #endif

@@ -6,30 +6,32 @@
 /*   By: ranki <ranki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 11:33:14 by ranki             #+#    #+#             */
-/*   Updated: 2022/12/06 00:04:55 by ranki            ###   ########.fr       */
+/*   Updated: 2022/12/08 00:46:33 by ranki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int ft_median(t_list *lst)
+int ft_median(t_list *lst, int size)
 {
     int min;
     int max;
     t_list *tmp;
+    int i = 0;
     
     if (lst == NULL)
         return 0;
     tmp = lst;
     min = tmp->content;
     max = tmp->content;
-    while (tmp != NULL)
+    while (tmp != NULL && i < size)
     {
         if (min > tmp->content)
             min = tmp->content;
         if (max < tmp->content)
-            max= tmp->content;
+            max = tmp->content;
         tmp =  tmp->next;
+        i++;
     }
     return ((min + max) / 2);
 }
@@ -38,60 +40,60 @@ int ft_quick_sort(t_list **a, t_list **b, int size)
 {
     int pivot;
     int i;
-    int cpt;
     
     size = ft_lstsize(*a);
-    t_list *tmp;
-    printf("\nquicaaaaaaaaaaaaaaaaaayyyyyyyyyyyaaaaaaaaa\n");
-    printf("size = %d\n", size);
-    if (ft_checksorted(*a))
-        return (1);
-    if (size < 3)
+    // printf("\nquicaaaaaaaaaaaaaaaaaayyyyyyyyyyyaaaaaaaaa\n");
+    // printf("a = ");
+    //     ft_printlist(*a);
+    //     printf("\n");
+    //     printf("b = ");
+    //     ft_printlist(*b);
+    //     printf("\n\n");
+    /*printf("size = %d\n", size);*/
+    if (ft_checksorted(*a, size))
     {
-       printf("return by sort 2\n");
-        if (size == 2)
-        {
-            ft_sort_2(a);
-            /*ft_push_b(a, b);
-            ft_push_b(a, b);*/
-        }
-        else if (size == 1)
-        {
-            ft_push_a(a, b);
-        }
+        // printf("a est triee et on sort de quick a\n");
+        return (1);
+    }
+    if (size <= 3)
+    {
+        ft_sort_adup(a, b, size);
+        // printf("a nest pas trie mais sa taille est inferieur a 3 on le trie \n");
         return (1);
     }
     i = 0;
-    cpt = 0;
-    pivot = ft_median(*a);
-    tmp = (*a);
-    printf("size = %d\n", size);
-    printf("Pivot = %d\n", pivot);
+    pivot = ft_median(*a, size);
+    //printf("pivot = %d\n",pivot);
+    int size_b = 0;
+    int size_a = 0;
     while (i < size)
     {
        // printf("i = %d\n", i);
         if ((*a)->content <= pivot)
         {
             ft_push_b(a, b);
-            cpt++;
+            size_b++;
         }
         else
+        {
             ft_rotate_a(a);
-       printf("a = ");
-        ft_printlist(*a);
-        printf("\n");
-        printf("b = ");
-        ft_printlist(*b);
-        printf("\n\n");
+            size_a++;
+        }
+    //    printf("a = ");
+    //     ft_printlist(*a);
+    //     printf("\n");
+    //     printf("b = ");
+    //     ft_printlist(*b);
+    //     printf("\n\n");
         i++;
     }
-    /* printf("b = ");
-        ft_printlist(*b);
-    printf("\n");*/
-    //printf("fin boucle kkk size - cpt = %d\n", size - cpt);
-    //return (1);
-    return (ft_quick_sort(a, b, size + cpt) && ft_quick_sort_b(a, b, cpt));
-    
+    i = 0;
+    while(i < size_a)
+    {
+        ft_rrotate_a(a);
+        i++;
+    }
+    return (ft_quick_sort(a, b, size_a) && ft_quick_sort_b(a, b,  size_b));
 }
 
 
@@ -99,62 +101,59 @@ int ft_quick_sort_b(t_list **a, t_list **b, int size)
 {
     int pivot;
     int i;
-    int cpt;
-    t_list *tmp;
     
-    size = ft_lstsize(*b);
-    printf("\nquicbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbtttttttttttbbb\n");
-    if (ft_checksorted_d(*b))
+    // size = ft_lstsize(*b);
+    // printf("\nquicbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbtttttttttttbbb\n");
+    // printf("a = ");
+    //     ft_printlist(*a);
+    //     printf("\n");
+    //     printf("b = ");
+    //     ft_printlist(*b);
+    //     printf("\n\n");
+        
+    if (ft_checksorted_d(*b, size))
     {
         while(size--)
             ft_push_a(a ,b);
         return (1);
     }
-    if (size < 3)
-    {   
-        if (size == 2)
-        {
-            ft_sort_2(b);
-           /**/ ft_push_a(a, b);
-            ft_push_a(a, b);*/
-        }
-        else if (size == 1)
-        {
-            ft_push_a(a, b);
-        }
+    if (size <= 3)
+    {
+        ft_sort_bdup(a, b, size);
         return (1);
     }
     i = 0;
-    cpt = 0;
-    pivot = ft_median(*b);
-    tmp = (*b);
-     printf("size = %d\n", size);
-    printf("Pivot = %d\n", pivot);
+    pivot = ft_median(*b, size);
+    int size_b = 0;
+    int size_a = 0;
     while (i < size)
     {
         if ((*b)->content > pivot)
         {
-            if ((*a)->content < (*b)->content)
-            {
-                ft_push_a(a, b);
-                ft_swap_a(a);
-            }
-            else
             ft_push_a(a, b);
-            cpt++;
+            size_a++;
         }
         else
+        {
             ft_rotate_b(b);
+            size_b++;    
+        }
         i++;
-      printf("a = ");
-        ft_printlist(*a);
-        printf("\n");
-        printf("b = ");
-        ft_printlist(*b);
-        printf("\n\n");
+    //   printf("a = ");
+    //     ft_printlist(*a);
+    //     printf("\n");
+    //     printf("b = ");
+    //     ft_printlist(*b);
+    //     printf("\n\n");
+    }
+    i = 0;
+    while(i < size_b)
+    {
+        ft_rrotate_b(b);
+        i++;
     }
  
    // printf("size - cpt = %d\n", size - cpt);
-    return (ft_quick_sort(a, b, size + cpt) && ft_quick_sort_b(a, b, size + cpt));
+    return (ft_quick_sort(a, b, size_a) && ft_quick_sort_b(a, b, size_b));
     
 }

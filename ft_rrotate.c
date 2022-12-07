@@ -6,7 +6,7 @@
 /*   By: ranki <ranki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 01:03:03 by ranki             #+#    #+#             */
-/*   Updated: 2022/12/05 01:18:16 by ranki            ###   ########.fr       */
+/*   Updated: 2022/12/08 00:43:45 by ranki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void ft_rrotate_a(t_list **a)
     t_list *tmp;
     t_list  *prec;
     
-    if (a == NULL || *a == NULL)
+    if (a == NULL || *a == NULL || (*a)->next == NULL)
         return ;
     prec = *a;
     tmp = ft_lstlast(*a);
@@ -33,7 +33,7 @@ void ft_rrotate_b(t_list **b)
     t_list *tmp;
     t_list  *prec;
     
-    if (b == NULL || *b == NULL)
+    if (b == NULL || *b == NULL || (*b)->next == NULL)
         return ;
     prec = *b;
     tmp = ft_lstlast(*b);

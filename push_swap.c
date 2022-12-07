@@ -6,7 +6,7 @@
 /*   By: ranki <ranki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/04 21:30:36 by ranki             #+#    #+#             */
-/*   Updated: 2022/12/05 22:57:22 by ranki            ###   ########.fr       */
+/*   Updated: 2022/12/08 00:47:32 by ranki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,24 +38,24 @@ t_list *ft_argtolist(int argc, char **argv)
 int main (int argc, char**argv)
 {
         t_list *lst = ft_argtolist(argc, argv);
-        ft_printlist(lst);
-        if (ft_checksorted_d(lst))
-            printf("\nLa liste est bien trie\n\n");
-        else
-        {
-            printf("\nla liste nest pas triee on va la trie\n\n");
-        }
+        //ft_printlist(lst);
+        // if (ft_checksorted_d(lst, ft_lstsize(lst)))
+        //     printf("\nLa liste est bien trie\n\n");
+        // else
+        // {
+        //     printf("\nla liste nest pas triee on va la trie\n\n");
+        // }
         //ft_swap_a(&lst);
        // ft_printlist(lst);
         //ft_unstack(&lst);
         //t_list *b = malloc(sizeof(t_list));
         t_list *b = NULL;
         ft_quick_sort(&lst, &b, ft_lstsize(lst));
-        printf("a = ");
-        ft_printlist(lst);
-        printf("\nau final a = ");
-        ft_printlist(lst);
+        // printf("a = ");
+        // ft_printlist(lst);
+        // // printf("\nau final a = ");
+        // ft_printlist(lst);
         ft_lstclear(&lst);
-        printf("\n ");
+        // printf("\n ");
         return (0);
 }
