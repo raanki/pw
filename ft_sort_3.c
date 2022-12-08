@@ -6,13 +6,13 @@
 /*   By: ranki <ranki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 15:19:02 by ranki             #+#    #+#             */
-/*   Updated: 2022/12/08 00:30:12 by ranki            ###   ########.fr       */
+/*   Updated: 2022/12/08 14:31:19 by ranki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void    ft_sort_adup(t_list **a, t_list **b, int size)
+void    ft_sort_adup(t_list **a, t_list **b, int size, t_listopt **result)
 {
     t_list *second;
     t_list *third;
@@ -23,41 +23,41 @@ void    ft_sort_adup(t_list **a, t_list **b, int size)
     {
         second = (*a)->next;
         if ((*a)->content > second->content)
-            ft_swap_a(a);
+            ft_swap_a(a, result);
     }
     else if (size == 3)
     {
         if ((*a)->content >= second->content && second->content >= third->content)
         {
-            ft_swap_a(a);
-            ft_push_b(a,b);
-            ft_swap_a(a);
-            ft_push_a(a,b);
-            ft_swap_a(a);
+            ft_swap_a(a ,result);
+            ft_push_b(a,b ,result);
+            ft_swap_a(a ,result);
+            ft_push_a(a,b ,result);
+            ft_swap_a(a ,result);
         }
         else if ((*a)->content >= second->content && (*a)->content >= third->content && second->content <= third->content)
         {
-            ft_swap_a(a);
-            ft_push_b(a,b);
-            ft_swap_a(a);
-            ft_push_a(a,b);
+            ft_swap_a(a ,result);
+            ft_push_b(a,b ,result);
+            ft_swap_a(a ,result);
+            ft_push_a(a,b ,result);
         }
         else if ((*a)->content <= second->content && (*a)->content >= third->content && second->content >= third->content)
         {
-            ft_push_b(a,b);
-            ft_swap_a(a);
-            ft_push_a(a,b);
-            ft_swap_a(a);
+            ft_push_b(a,b ,result);
+            ft_swap_a(a ,result);
+            ft_push_a(a,b ,result);
+            ft_swap_a(a ,result);
         }
         else if ((*a)->content >= second->content && second->content <= third->content && (*a)->content <= third->content)
         {
-            ft_swap_a(a);
+            ft_swap_a(a ,result);
         }
         else if ((*a)->content <= second->content && second->content >= third->content && (*a)->content <= third->content)
         {
-            ft_push_b(a,b);
-            ft_swap_a(a);
-            ft_push_a(a,b);
+            ft_push_b(a,b ,result);
+            ft_swap_a(a ,result);
+            ft_push_a(a,b ,result);
         }
     }
     
@@ -119,7 +119,7 @@ void    ft_sort_adup(t_list **a, t_list **b, int size)
 //     }
 // }
 
-void    ft_sort_bdup(t_list **a, t_list **b, int size)
+void    ft_sort_bdup(t_list **a, t_list **b, int size ,t_listopt **result)
 {
     t_list *second;
     t_list *third;
@@ -127,61 +127,61 @@ void    ft_sort_bdup(t_list **a, t_list **b, int size)
     second = (*b)->next;
     third = second->next;
     if (size == 1)
-        ft_push_a(a,b);
+        ft_push_a(a,b ,result);
     else if (size == 2)
     {
         second = (*b)->next;
         if ((*b)->content < second->content)
-            ft_swap_b(b);
-        ft_push_a(a, b);
-        ft_push_a(a, b);
+            ft_swap_b(b ,result);
+        ft_push_a(a, b, result);
+        ft_push_a(a, b, result);
     }
     else if (size == 3)
     {
         if ((*b)->content >= second->content && second->content >= third->content)
         {
-            ft_push_a(a,b);
-            ft_push_a(a,b);
-            ft_push_a(a,b);
+            ft_push_a(a,b, result);
+            ft_push_a(a,b, result);
+            ft_push_a(a,b, result);
         }
         else if ((*b)->content >= second->content && (*b)->content >= third->content && second->content <= third->content)
         {
-            ft_push_a(a,b);
-            ft_swap_b(b);
-            ft_push_a(a,b);
-            ft_push_a(a,b);
+            ft_push_a(a,b, result);
+            ft_swap_b(b, result);
+            ft_push_a(a,b, result);
+            ft_push_a(a,b, result);
         }
         else if ((*b)->content <= second->content && (*b)->content >= third->content && second->content >= third->content)
         {
-            ft_swap_b(b);
-            ft_push_a(a,b);
-            ft_push_a(a,b);
-            ft_push_a(a,b);
+            ft_swap_b(b, result);
+            ft_push_a(a,b, result);
+            ft_push_a(a,b, result);
+            ft_push_a(a,b, result);
         }
         else if ((*b)->content >= second->content && second->content <= third->content && (*b)->content <= third->content)
         {
-            ft_push_a(a,b);
-            ft_swap_b(b);
-            ft_push_a(a,b);
-            ft_swap_a(a);
-            ft_push_a(a,b);
+            ft_push_a(a,b, result);
+            ft_swap_b(b, result);
+            ft_push_a(a,b, result);
+            ft_swap_a(a, result);
+            ft_push_a(a,b, result);
         }
         else if ((*b)->content <= second->content && second->content >= third->content && (*b)->content <= third->content)
         {
-            ft_swap_b(b);
-            ft_push_a(a,b);
-            ft_swap_b(b);
-            ft_push_a(a,b);
-            ft_push_a(a,b);
+            ft_swap_b(b, result);
+            ft_push_a(a,b, result);
+            ft_swap_b(b, result);
+            ft_push_a(a,b, result);
+            ft_push_a(a,b, result);
         }
         else if ((*b)->content <= second->content && second->content <= third->content)
         {
-            ft_rotate_b(b);
-            ft_swap_b(b);
-            ft_push_a(a,b);
-            ft_push_a(a,b);
-            ft_rrotate_b(b);
-            ft_push_a(a,b);
+            ft_rotate_b(b, result);
+            ft_swap_b(b, result);
+            ft_push_a(a,b, result);
+            ft_push_a(a,b, result);
+            ft_rrotate_b(b, result);
+            ft_push_a(a,b, result);
         }
     }
     

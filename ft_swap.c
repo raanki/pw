@@ -6,13 +6,13 @@
 /*   By: ranki <ranki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/04 23:18:48 by ranki             #+#    #+#             */
-/*   Updated: 2022/12/05 00:48:12 by ranki            ###   ########.fr       */
+/*   Updated: 2022/12/08 14:23:36 by ranki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void ft_swap_a(t_list **lst)
+void ft_swap_a(t_list **lst ,t_listopt **result)
 {
     t_list *tmp;
 
@@ -22,10 +22,10 @@ void ft_swap_a(t_list **lst)
     *lst = ((*lst)->next);
     tmp->next = ((*lst)->next);
     ((*lst)->next) = tmp;
-    printf("sa\n");
+    add_move(result, "sa");
 }
 
-void ft_swap_b(t_list **lst)
+void ft_swap_b(t_list **lst ,t_listopt **result)
 {
     t_list *tmp;
 
@@ -35,10 +35,10 @@ void ft_swap_b(t_list **lst)
     *lst = ((*lst)->next);
     tmp->next = ((*lst)->next);
     ((*lst)->next) = tmp;
-    printf("sb\n");
+    add_move(result, "sb");
 }
 
-void ft_swap_ss(t_list **a, t_list **b)
+void ft_swap_ss(t_list **a, t_list **b ,t_listopt **result)
 {
     t_list *tmp;
 
@@ -52,6 +52,6 @@ void ft_swap_ss(t_list **a, t_list **b)
     *b = ((*b)->next);
     tmp->next = ((*b)->next);
     ((*b)->next) = tmp;
-    printf("ss\n");
+    add_move(result, "ss");
 }
 

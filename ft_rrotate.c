@@ -6,13 +6,13 @@
 /*   By: ranki <ranki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 01:03:03 by ranki             #+#    #+#             */
-/*   Updated: 2022/12/08 00:43:45 by ranki            ###   ########.fr       */
+/*   Updated: 2022/12/08 14:21:19 by ranki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void ft_rrotate_a(t_list **a)
+void ft_rrotate_a(t_list **a ,t_listopt **result)
 {
     t_list *tmp;
     t_list  *prec;
@@ -25,10 +25,10 @@ void ft_rrotate_a(t_list **a)
         prec = prec->next;
     ft_lstadd_front(a, tmp);
     prec->next = NULL;
-    printf("rra\n");
+    add_move(result, "rra");
 }
 
-void ft_rrotate_b(t_list **b)
+void ft_rrotate_b(t_list **b ,t_listopt **result)
 {
     t_list *tmp;
     t_list  *prec;
@@ -41,10 +41,10 @@ void ft_rrotate_b(t_list **b)
         prec = prec->next;
     ft_lstadd_front(b, tmp);
     prec->next = NULL;
-    printf("rrb\n");
+    add_move(result, "rrb");
 }
 
-void ft_rrotate_rr(t_list **a, t_list **b)
+void ft_rrotate_rr(t_list **a, t_list **b ,t_listopt **result)
 {
     t_list *tmp;
     t_list  *prec;
@@ -63,5 +63,5 @@ void ft_rrotate_rr(t_list **a, t_list **b)
         prec = prec->next;
     ft_lstadd_front(b, tmp);
     prec->next = NULL;
-    printf("rrr\n");
+    add_move(result, "rrr");
 }

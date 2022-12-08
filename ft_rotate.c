@@ -6,39 +6,39 @@
 /*   By: ranki <ranki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 00:39:27 by ranki             #+#    #+#             */
-/*   Updated: 2022/12/05 22:18:00 by ranki            ###   ########.fr       */
+/*   Updated: 2022/12/08 16:16:36 by ranki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void    ft_rotate_a(t_list **lst)
+void    ft_rotate_a(t_list **lst ,t_listopt **result)
 {
     t_list *tmp;
     
     if (*lst == NULL)
         return ;
-    tmp = ft_lstnew((*lst)->content);
+    tmp = *lst;
+    *lst = (*lst)->next;
     ft_lstadd_back(lst, tmp);
     tmp->next = NULL;
-    *lst = (*lst)->next;
-    printf("ra\n");
+    add_move(result, "ra");
 }
 
-void    ft_rotate_b(t_list **lst)
+void    ft_rotate_b(t_list **lst ,t_listopt **result)
 {
     t_list *tmp;
     
     if (*lst == NULL)
         return ;
-    tmp = ft_lstnew((*lst)->content);
+    tmp = *lst;
+    *lst = (*lst)->next;
     ft_lstadd_back(lst, tmp);
     tmp->next = NULL;
-    *lst = (*lst)->next;
-    printf("rb\n");
+    add_move(result, "rb");
 }
 
-void    ft_rotate_rr(t_list **a, t_list **b)
+void    ft_rotate_rr(t_list **a, t_list **b ,t_listopt **result)
 {
     t_list *tmp;
     
@@ -52,5 +52,5 @@ void    ft_rotate_rr(t_list **a, t_list **b)
     ft_lstadd_back(b, tmp);
     tmp->next = NULL;
     *b = (*b)->next;
-    printf("rr\n");
+    add_move(result, "rr");
 }

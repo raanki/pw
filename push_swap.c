@@ -6,7 +6,7 @@
 /*   By: ranki <ranki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/04 21:30:36 by ranki             #+#    #+#             */
-/*   Updated: 2022/12/08 00:47:32 by ranki            ###   ########.fr       */
+/*   Updated: 2022/12/08 16:44:19 by ranki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,21 @@
     ft_printlist(lst->next);
 }
 
+void   ft_printlistchar(t_listopt *lst)
+{
+    if (lst == NULL)
+        return ;
+    printf("%s\n", lst->content);
+    ft_printlistchar(lst->next);
+}
+
 t_list *ft_argtolist(int argc, char **argv)
 {
     int i;
     t_list *lst;
    
     i = 1;
+    lst = NULL;
     while (i < argc)
     {
         ft_lstadd_back(&lst, ft_lstnew(atoi(argv[i])));
@@ -35,27 +44,21 @@ t_list *ft_argtolist(int argc, char **argv)
     return(lst);
 }
 
+void    add_move(t_listopt **result, char *s)
+{
+    ft_lstadd_backchar(result, ft_lstnewstr(s));
+}
+
 int main (int argc, char**argv)
 {
-        t_list *lst = ft_argtolist(argc, argv);
-        //ft_printlist(lst);
-        // if (ft_checksorted_d(lst, ft_lstsize(lst)))
-        //     printf("\nLa liste est bien trie\n\n");
-        // else
-        // {
-        //     printf("\nla liste nest pas triee on va la trie\n\n");
-        // }
-        //ft_swap_a(&lst);
-       // ft_printlist(lst);
-        //ft_unstack(&lst);
-        //t_list *b = malloc(sizeof(t_list));
-        t_list *b = NULL;
-        ft_quick_sort(&lst, &b, ft_lstsize(lst));
-        // printf("a = ");
-        // ft_printlist(lst);
-        // // printf("\nau final a = ");
-        // ft_printlist(lst);
+        t_list  *lst = ft_argtolist(argc, argv);
+        t_list  *b = NULL;
+        t_listopt  *result = NULL;
+        ft_quick_sort(&lst, &b, ft_lstsize(lst), &result);
+        simply(&result);
+        ft_printlistchar(result);
+        ft_printlist(lst);
         ft_lstclear(&lst);
-        // printf("\n ");
+        ft_lstclearchar(&result);
         return (0);
 }

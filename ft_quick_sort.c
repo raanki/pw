@@ -6,7 +6,7 @@
 /*   By: ranki <ranki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 11:33:14 by ranki             #+#    #+#             */
-/*   Updated: 2022/12/08 00:46:33 by ranki            ###   ########.fr       */
+/*   Updated: 2022/12/08 14:14:33 by ranki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,90 +36,63 @@ int ft_median(t_list *lst, int size)
     return ((min + max) / 2);
 }
 
-int ft_quick_sort(t_list **a, t_list **b, int size)
+int ft_quick_sort(t_list **a, t_list **b, int size, t_listopt **result)
 {
     int pivot;
     int i;
     
     size = ft_lstsize(*a);
-    // printf("\nquicaaaaaaaaaaaaaaaaaayyyyyyyyyyyaaaaaaaaa\n");
-    // printf("a = ");
-    //     ft_printlist(*a);
-    //     printf("\n");
-    //     printf("b = ");
-    //     ft_printlist(*b);
-    //     printf("\n\n");
-    /*printf("size = %d\n", size);*/
     if (ft_checksorted(*a, size))
     {
-        // printf("a est triee et on sort de quick a\n");
         return (1);
     }
     if (size <= 3)
     {
-        ft_sort_adup(a, b, size);
-        // printf("a nest pas trie mais sa taille est inferieur a 3 on le trie \n");
+        ft_sort_adup(a, b, size, result);
         return (1);
     }
     i = 0;
     pivot = ft_median(*a, size);
-    //printf("pivot = %d\n",pivot);
     int size_b = 0;
     int size_a = 0;
     while (i < size)
     {
-       // printf("i = %d\n", i);
         if ((*a)->content <= pivot)
         {
-            ft_push_b(a, b);
+            ft_push_b(a, b, result);
             size_b++;
         }
         else
         {
-            ft_rotate_a(a);
+            ft_rotate_a(a, result);
             size_a++;
         }
-    //    printf("a = ");
-    //     ft_printlist(*a);
-    //     printf("\n");
-    //     printf("b = ");
-    //     ft_printlist(*b);
-    //     printf("\n\n");
         i++;
     }
     i = 0;
     while(i < size_a)
     {
-        ft_rrotate_a(a);
+        ft_rrotate_a(a, result);
         i++;
     }
-    return (ft_quick_sort(a, b, size_a) && ft_quick_sort_b(a, b,  size_b));
+    return (ft_quick_sort(a, b, size_a, result) && ft_quick_sort_b(a, b,  size_b, result));
 }
 
 
-int ft_quick_sort_b(t_list **a, t_list **b, int size)
+int ft_quick_sort_b(t_list **a, t_list **b, int size, t_listopt **result)
 {
     int pivot;
     int i;
     
-    // size = ft_lstsize(*b);
-    // printf("\nquicbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbtttttttttttbbb\n");
-    // printf("a = ");
-    //     ft_printlist(*a);
-    //     printf("\n");
-    //     printf("b = ");
-    //     ft_printlist(*b);
-    //     printf("\n\n");
-        
     if (ft_checksorted_d(*b, size))
     {
         while(size--)
-            ft_push_a(a ,b);
+            ft_push_a(a ,b, result);
         return (1);
     }
     if (size <= 3)
     {
-        ft_sort_bdup(a, b, size);
+        ft_sort_bdup(a, b, size, result);
         return (1);
     }
     i = 0;
@@ -130,30 +103,22 @@ int ft_quick_sort_b(t_list **a, t_list **b, int size)
     {
         if ((*b)->content > pivot)
         {
-            ft_push_a(a, b);
+            ft_push_a(a, b, result);
             size_a++;
         }
         else
         {
-            ft_rotate_b(b);
+            ft_rotate_b(b, result);
             size_b++;    
         }
         i++;
-    //   printf("a = ");
-    //     ft_printlist(*a);
-    //     printf("\n");
-    //     printf("b = ");
-    //     ft_printlist(*b);
-    //     printf("\n\n");
     }
     i = 0;
     while(i < size_b)
     {
-        ft_rrotate_b(b);
+        ft_rrotate_b(b, result);
         i++;
     }
- 
-   // printf("size - cpt = %d\n", size - cpt);
-    return (ft_quick_sort(a, b, size_a) && ft_quick_sort_b(a, b, size_b));
+    return (ft_quick_sort(a, b, size_a, result) && ft_quick_sort_b(a, b, size_b, result));
     
 }

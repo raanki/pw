@@ -1,39 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
+/*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ranki <ranki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/11 18:34:40 by ranki             #+#    #+#             */
-/*   Updated: 2022/12/08 13:58:04 by ranki            ###   ########.fr       */
+/*   Created: 2022/09/09 10:55:10 by ranki             #+#    #+#             */
+/*   Updated: 2022/12/08 15:10:33 by ranki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_lstadd_back(t_list **lst, t_list *new)
+size_t	ft_strlen(const char *d)
 {
-	t_list	*tmp;
+	size_t	cpt;
 
-	if (*lst == NULL)
-		*lst = new;
-	else
-	{
-		tmp = ft_lstlast(*(lst));
-		tmp->next = new;
-	}
+	cpt = 0;
+	while (d[cpt])
+		cpt++;
+	return (cpt);
 }
 
-void	ft_lstadd_backchar(t_listopt **lst, t_listopt *new)
+int	ft_strcmp(const char *s1, const char *s2)
 {
-	t_listopt	*tmp;
-
-	if (*lst == NULL)
-		*lst = new;
-	else
+	size_t	size_s1;
+	size_t	size_s2;
+	int	i;
+	
+	i = 0;
+	size_s1 = ft_strlen(s1);
+	size_s2 = ft_strlen(s2);
+	while ((s1[i] && s2[i]) && (s1[i] == s2[i]) && i < size_s1 && i < size_s2)
 	{
-		tmp = ft_lstlastchar(*(lst));
-		tmp->next = new;
+		i++;
 	}
+	if (i >= size_s1 || i >= size_s2)
+		return (0);
+	return ((unsigned char)s1[i] - (unsigned char)s2[i]);
 }
