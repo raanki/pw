@@ -6,7 +6,7 @@
 /*   By: ranki <ranki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 10:55:10 by ranki             #+#    #+#             */
-/*   Updated: 2022/12/08 15:10:33 by ranki            ###   ########.fr       */
+/*   Updated: 2022/12/10 00:26:26 by ranki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ size_t	ft_strlen(const char *d)
 
 int	ft_strcmp(const char *s1, const char *s2)
 {
-	size_t	size_s1;
-	size_t	size_s2;
+	int	size_s1;
+	int	size_s2;
 	int	i;
 	
 	i = 0;

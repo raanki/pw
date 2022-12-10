@@ -6,7 +6,7 @@
 /*   By: ranki <ranki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 15:19:02 by ranki             #+#    #+#             */
-/*   Updated: 2022/12/08 14:31:19 by ranki            ###   ########.fr       */
+/*   Updated: 2022/12/10 00:27:56 by ranki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,38 +86,36 @@ void    ft_sort_adup(t_list **a, t_list **b, int size, t_listopt **result)
     // }
 
 
-// void    ft_sort_3d(t_list **b, int size)
-// {
-//     //printf("pbsse pbr feneu\n");
-//      t_list *tmp;
-//     t_list *tmp2;
-    
-//     //printf("pbsse pbr feneu\n");
-//     if (b == NULL || *b == 0)
-//         return ;
-//    // ft_printlist(*b);
-//     while (ft_checksorted_d(*b, size) != 1)
-//     {
-//         tmp = (*b)->next;
-//         tmp2 = tmp->next;
-//         if (ft_checksorted(*b))
-//         {
-//             ft_rotate_b(b);
-//         }
-//         else if ((*b)->content < tmp2->content)
-//         {
-//             ft_rotate_b(b);
-//         }
-//         else if ((*b)->content < tmp->content)
-//         {
-//                 ft_swap_b(b);
-//         }
-//         else
-//         {
-//             ft_rotate_b(b);
-//         }
-//     }
-// }
+void    ft_sort_3express(t_list **b, int size, t_listopt **result)
+{
+
+     t_list *tmp;
+    t_list *tmp2;
+
+    if (b == NULL || *b == 0)
+        return ;
+    while (ft_checksorted(*b, size) != 1)
+    {
+        tmp = (*b)->next;
+        tmp2 = tmp->next;
+        if (ft_checksorted_d(*b, size))
+        {
+            ft_rotate_b(b, result);
+        }
+        else if ((*b)->content > tmp2->content)
+        {
+            ft_rotate_b(b, result);
+        }
+        else if ((*b)->content > tmp->content)
+        {
+                ft_swap_b(b, result);
+        }
+        else
+        {
+            ft_rotate_b(b, result);
+        }
+    }
+}
 
 void    ft_sort_bdup(t_list **a, t_list **b, int size ,t_listopt **result)
 {

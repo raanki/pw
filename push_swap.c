@@ -6,7 +6,7 @@
 /*   By: ranki <ranki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/04 21:30:36 by ranki             #+#    #+#             */
-/*   Updated: 2022/12/08 16:44:19 by ranki            ###   ########.fr       */
+/*   Updated: 2022/12/10 01:12:47 by ranki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ void   ft_printlistchar(t_listopt *lst)
 {
     if (lst == NULL)
         return ;
+    
     printf("%s\n", lst->content);
     ft_printlistchar(lst->next);
 }
@@ -49,15 +50,59 @@ void    add_move(t_listopt **result, char *s)
     ft_lstadd_backchar(result, ft_lstnewstr(s));
 }
 
-int main (int argc, char**argv)
+int check_arg(int argc, char **argv)
 {
-        t_list  *lst = ft_argtolist(argc, argv);
-        t_list  *b = NULL;
-        t_listopt  *result = NULL;
-        ft_quick_sort(&lst, &b, ft_lstsize(lst), &result);
+    int i;
+    int j;
+    
+    if (argc <= 1)
+        return (0);
+    i = 1;
+    if (strcmp(argv[1], "c") == 0)
+        i++;
+    while (i < argc)
+    {
+        j = 0;
+        while ('\0' != argv[i][j])
+        {
+            if (!((argv[i][j] >= '0' && argv[i][j] <= '9')
+            || argv[i][j] == '-'))
+                return (0);
+            j++;
+        }
+        i++;
+    }
+    return (1);
+}
+int main (int argc, char **argv)
+{
+        t_list  *lst;
+        t_list  *b;
+        t_listopt  *result;
+        int i;
+        
+        i = 0;
+        if (check_arg(argc, argv) == 0)
+            {
+                write (2, "Error\n", 6);
+                return (0);
+            }
+        b = NULL;
+        result = NULL;
+        lst = ft_argtolist(argc, argv);
+        if (ft_checksorted_d(lst, ft_lstsize(lst)) == 1)
+            {
+                while (i++ < ft_lstsize(lst))
+                    ft_rotate_a(&lst, &result); 
+            }
+        else if (ft_lstsize(lst) <= 3)
+            ft_sort_3express(&lst, ft_lstsize(lst), &result);
+        else
+            ft_quick_sort(&lst, &b, ft_lstsize(lst), &result);
         simply(&result);
         ft_printlistchar(result);
-        ft_printlist(lst);
+        //ft_printlist(lst);
+        printf("\n");
         ft_lstclear(&lst);
         ft_lstclearchar(&result);
         return (0);

@@ -6,7 +6,7 @@
 /*   By: ranki <ranki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 14:38:25 by ranki             #+#    #+#             */
-/*   Updated: 2022/12/08 15:46:52 by ranki            ###   ########.fr       */
+/*   Updated: 2022/12/10 00:25:33 by ranki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,12 @@ int	ft_lstsizechar(t_listopt *lst)
 
 void simply(t_listopt **lst)
 {
-    int i;
     int size;
     t_listopt *tmp;
     t_listopt *cure;
     t_listopt *prec;
 
     size = ft_lstsizechar(*lst);
-    i = 0;
     if (size <= 3)
         return ;
     prec = (*lst);
