@@ -6,7 +6,7 @@
 /*   By: ranki <ranki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/04 21:30:36 by ranki             #+#    #+#             */
-/*   Updated: 2022/12/10 01:12:47 by ranki            ###   ########.fr       */
+/*   Updated: 2022/12/16 09:52:13 by ranki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ int main (int argc, char **argv)
         int i;
         
         i = 0;
-        if (check_arg(argc, argv) == 0)
+       if (check_arg(argc, argv) == 0)
             {
                 write (2, "Error\n", 6);
                 return (0);
@@ -90,19 +90,25 @@ int main (int argc, char **argv)
         b = NULL;
         result = NULL;
         lst = ft_argtolist(argc, argv);
-        if (ft_checksorted_d(lst, ft_lstsize(lst)) == 1)
+       /*if (ft_checksorted_d(lst, ft_lstsize(lst) / 2 + ft_lstsize(lst) % 2) == 1)
             {
                 while (i++ < ft_lstsize(lst))
                     ft_rotate_a(&lst, &result); 
-            }
+            }*/
+        if (ft_checksorted_d(lst, ft_lstsize(lst)) == 1 && ft_lstsize(lst) == 5)
+            sort_12d(&lst, &b, &result);
+        if (ft_lstsize(lst) == 5)
+            sort_5(&lst, &b, &result);
+        if (ft_lstsize(lst) == 4)
+            sort_4(&lst, &b, &result);
         else if (ft_lstsize(lst) <= 3)
             ft_sort_3express(&lst, ft_lstsize(lst), &result);
         else
             ft_quick_sort(&lst, &b, ft_lstsize(lst), &result);
-        simply(&result);
+        //simply(&result);
         ft_printlistchar(result);
-        //ft_printlist(lst);
-        printf("\n");
+    //    ft_printlist(lst);
+    //    printf("\n");
         ft_lstclear(&lst);
         ft_lstclearchar(&result);
         return (0);

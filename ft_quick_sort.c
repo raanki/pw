@@ -6,7 +6,7 @@
 /*   By: ranki <ranki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 11:33:14 by ranki             #+#    #+#             */
-/*   Updated: 2022/12/10 01:14:47 by ranki            ###   ########.fr       */
+/*   Updated: 2022/12/16 09:55:39 by ranki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,14 @@ int ft_quick_sort(t_list **a, t_list **b, int size, t_listopt **result)
 
     if (ft_checksorted(*a, size))
         return (1);
+ /*  if (ft_lstsize(*a) <= 3)
+    {
+        if (ft_lstsize(*a) == 3)
+            ft_sort_3express(a, ft_lstsize(*a), result);
+        if (ft_lstsize(*a) == 2)
+            ft_sort_2(a, result);
+        return (1);
+    }*/
     if (size <= 3)
     {
         ft_sort_adup(a, b, size, result);
@@ -101,6 +109,8 @@ int ft_quick_sort(t_list **a, t_list **b, int size, t_listopt **result)
     int size_a = 0;
     while (i < size)
     {
+        if (b != NULL && *b != NULL && (*a)->content > (*a)->next->content && (*b)->content < (*a)->next->content)
+                ft_swap_a(a, result);
         if ((*a)->content <= pivot)
         {
             ft_push_b(a, b, result);
@@ -134,6 +144,14 @@ int ft_quick_sort_b(t_list **a, t_list **b, int size, t_listopt **result)
             ft_push_a(a ,b, result);
         return (1);
     }
+    /*if (ft_lstsize(*b) <= 3)
+    {
+        if (ft_lstsize(*b) == 3)
+            ft_sort_3express_d(b, ft_lstsize(*b), result);
+        if (ft_lstsize(*b) == 2)
+            ft_sort_2_d(b, result);
+        return (1);
+    }*/
     if (size <= 3)
     {
         ft_sort_bdup(a, b, size, result);
@@ -141,7 +159,6 @@ int ft_quick_sort_b(t_list **a, t_list **b, int size, t_listopt **result)
     }
     i = 0;
     pivot = ft_median(*b, size);
-    //printf("pivot = %d\n", pivot);
     int size_b = 0;
     int size_a = 0;
     while (i < size)

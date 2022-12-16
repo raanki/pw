@@ -6,7 +6,7 @@
 /*   By: ranki <ranki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/04 21:33:59 by ranki             #+#    #+#             */
-/*   Updated: 2022/12/10 00:54:28 by ranki            ###   ########.fr       */
+/*   Updated: 2022/12/16 09:51:46 by ranki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,5 +82,9 @@ void    add_move(t_listopt **result, char *s);
  void simply(t_listopt **lst);
  int	ft_strcmp(const char *s1, const char *s2);
  void   ft_printlistchar(t_listopt *lst);
+ void    ft_sort_3express_d(t_list **b, int size, t_listopt **result);
+ void sort_12d(t_list **a, t_list **b, t_listopt **result);
+ void sort_5(t_list **a, t_list **b, t_listopt **result);
+ void sort_4(t_list **a, t_list **b, t_listopt **result);
  
  #endif
