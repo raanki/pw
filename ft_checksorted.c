@@ -6,7 +6,7 @@
 /*   By: ranki <ranki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/04 22:38:55 by ranki             #+#    #+#             */
-/*   Updated: 2022/12/09 22:02:02 by ranki            ###   ########.fr       */
+/*   Updated: 2023/03/10 22:17:54 by ranki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,65 +14,65 @@
 
 int     ft_checksorted(t_list *lst, int size)
 {
-    t_list  *tmp;
-    t_list  *prec;
-    int i = 0;
+	t_list  *tmp;
+	t_list  *prec;
+	int i = 0;
 
-    if  (lst == NULL || lst->next == NULL)
-        return (1);
-    tmp = lst->next;
-    prec = lst;
-    while(tmp != NULL && i < size)
-    {
-        if(prec->content > tmp->content)
-            return 0; 
-        tmp = tmp->next;
-        prec = prec->next;
-        i++;
-    }
-    return (1);
+	if  (lst == NULL || lst->next == NULL)
+		return (1);
+	tmp = lst->next;
+	prec = lst;
+	while(tmp != NULL && i < size)
+	{
+		if(prec->content > tmp->content)
+			return 0; 
+		tmp = tmp->next;
+		prec = prec->next;
+		i++;
+	}
+	return (1);
 }
 int     ft_checksorted_d(t_list *lst, int size)
 {
-    t_list  *tmp;
-    t_list  *prec;
-    int i = 0;
+	t_list  *tmp;
+	t_list  *prec;
+	int i = 0;
 
-    if  (lst == NULL || lst->next == NULL)
-        return (1);
-    tmp = lst->next;
-    prec = lst;
-    while(tmp != NULL && i < size)
-    {
-        if(prec->content < tmp->content)
-            return 0; 
-        tmp = tmp->next;
-        prec = prec->next;
-        i++;
-    }
-    return (1);
+	if  (lst == NULL || lst->next == NULL)
+		return (1);
+	tmp = lst->next;
+	prec = lst;
+	while(tmp != NULL && i < size)
+	{
+		if(prec->content < tmp->content)
+			return 0; 
+		tmp = tmp->next;
+		prec = prec->next;
+		i++;
+	}
+	return (1);
 }
 
 void    ft_sort_2(t_list **lst ,t_listopt **result)
 {
-    t_list *tmp;
-    
-    if (lst == NULL)
-        return ;
-    tmp = (*lst)->next;
-    if (tmp->content > (*lst)->content)
-        ft_swap_a(lst, result);
+	t_list *tmp;
+
+	if (lst == NULL)
+		return ;
+	tmp = (*lst)->next;
+	if (tmp->content > (*lst)->content)
+		ft_swap_a(lst, result);
 }
 
 
 void    ft_sort_2_d(t_list **lst ,t_listopt **result)
 {
-    t_list *tmp;
-    
-    if (lst == NULL)
-        return ;
-    tmp = (*lst)->next;
-    if (tmp->content > (*lst)->content)
-        ft_swap_b(lst, result);
+	t_list *tmp;
+
+	if (lst == NULL)
+		return ;
+	tmp = (*lst)->next;
+	if (tmp->content > (*lst)->content)
+		ft_swap_b(lst, result);
 }
 
